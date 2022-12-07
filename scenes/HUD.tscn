@@ -1,0 +1,70 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://fonts/xolonium.tres" type="DynamicFont" id=1]
+[ext_resource path="res://scripts/HUD.gd" type="Script" id=2]
+[ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+font_data = ExtResource( 3 )
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="ControlsMessage" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.585
+anchor_right = 0.5
+anchor_bottom = 0.585
+margin_left = -848.0
+margin_top = -79.8
+margin_right = 840.0
+margin_bottom = 88.2
+custom_fonts/font = SubResource( 1 )
+text = "'space' to boost
+'a' and 'd' to turn"
+align = 1
+autowrap = true
+
+[node name="Message" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -664.0
+margin_top = -388.0
+margin_right = 670.0
+margin_bottom = -75.0
+custom_fonts/font = ExtResource( 1 )
+text = "Dodge the Asteroids!"
+align = 1
+autowrap = true
+
+[node name="ScoreLabel" type="Label" parent="."]
+margin_left = 64.0
+margin_right = 155.0
+margin_bottom = 155.0
+custom_fonts/font = ExtResource( 1 )
+text = "0"
+
+[node name="MessageTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="StartButton" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -384.0
+margin_top = -320.0
+margin_right = 389.0
+margin_bottom = -159.0
+custom_fonts/font = ExtResource( 1 )
+text = "Start"
+__meta__ = {
+"_editor_description_": ""
+}
+
+[connection signal="timeout" from="MessageTimer" to="." method="_on_MessageTimer_timeout"]
+[connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
